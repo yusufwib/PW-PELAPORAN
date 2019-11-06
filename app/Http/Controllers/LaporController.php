@@ -32,7 +32,7 @@ class LaporController extends Controller
             'ruang' => $request->input('ruang'),
             'isi' => $request->input('isi'),
             'gambar' => URL::to('/storage') .'/'. $filename,
-            'status' => 'req',
+            'status' => 'menunggu',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

@@ -40,9 +40,9 @@ class AdminController extends Controller
     }
 
     public function getGrafik(){
-        $req = Laporan::where('status', 'req')->count();
+        $req = Laporan::where('status', 'menunggu')->count();
         $proses = Laporan::where('status', 'proses')->count();
-        $finish = Laporan::where('status', 'finish')->count();
+        $finish = Laporan::where('status', 'selesai')->count();
         $all = Laporan::count();
 
         $result = [
@@ -96,7 +96,7 @@ return response()->json($result);
     }
     public function putFinish($id){
         Laporan::where('id', $id)->update([
-            'status' => 'finish',
+            'status' => 'selesai',
             'updated_at' => Carbon::now(),
 
         ]);

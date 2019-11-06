@@ -143,7 +143,7 @@
                                 <div id="accordion4" class="according accordion-s3 gradiant-bg">
                                     <!-- //foreach  -->
                                     @foreach($result as $res)
-                                    @if($res->status == "req")
+                                    @if($res->status == "menunggu")
                                     <div class="card">
                                         <div class="card-header">
                                             <a class="card-link" data-toggle="collapse" href="#{{ $res->id }}">
@@ -232,7 +232,7 @@
                                 <div id="accordion4" class="according accordion-s3 gradiant-bg">
                                     <!-- //foreach  -->
                                     @foreach($result as $res)
-                                    @if($res->status == "finish")
+                                    @if($res->status == "selesai")
                                     <div class="card">
                                         <div class="card-header">
                                             <a class="card-link" data-toggle="collapse" href="#{{ $res->id }}">
