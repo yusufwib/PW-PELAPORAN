@@ -21,10 +21,10 @@ class AuthController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-
+            // dd($credentials)    ;    
         if (Auth::attempt($credentials)) {
             if (Auth::user()->role == 'admin') {
-                // return redirect('/dashboard');
+                // return redirect('/dashboarvb d');
                 return redirect('dashboard');
             }
             else {
@@ -33,8 +33,7 @@ class AuthController extends Controller
         } 
         else {
             return redirect('/login')->withErrors(['Email atau password salah!','email atau password salah!']);
-        }
-        // r    eturn redirect('dashboard');
+        } 
     }
 
     public function register(Request $request){

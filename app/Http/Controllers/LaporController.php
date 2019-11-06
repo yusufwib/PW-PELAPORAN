@@ -50,12 +50,24 @@ class LaporController extends Controller
 
     $result = Laporan::where('id_user', $id_user)->get();
 
+    // return response()->json($result);
+if(count($result) === 0){
+
+    return response()->json([
+        'success' => false,
+        'data' => $result,
+        'statusCode' => 200
+    ]);
+
+}else{
+
     return response()->json([
         'success' => true,
         'data' => $result,
         'statusCode' => 200
     ]);
 
+}
     }
     public function getReportId(Request $request, $id){
 
