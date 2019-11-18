@@ -36,7 +36,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('/getReportReq','LaporController@getReportReq');
     Route::get('/getReportProgress','LaporController@getReportProgress');
     Route::get('/getReportFinish','LaporController@getReportFinish');
-    
+    Route::post('/putProfile/{id}', 'LaporController@editProfile');
     // Route::post('/putProgres','');
     // Route::post('/putFinish','');
     Route::get('getgrafik','AdminController@getGrafik');
