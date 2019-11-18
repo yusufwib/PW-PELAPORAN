@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/themify-icons.css">
     <link rel="stylesheet" href="assets/css/metisMenu.css">
@@ -30,6 +31,9 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    
+  <link rel='stylesheet' href='https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css'>
+<link rel='stylesheet' href='https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css'>
 </head>
 
 <body>
@@ -148,6 +152,7 @@
                             <a href="adduser" class="btn btn-success m-2"
                                 style="width : 122px; text-align : center; float : right;">Add new user</a>
                             <div class="card-body">
+
                                 <h4 class="header-title">Data Table Primary</h4>
                                 <div class="data-tables datatable-primary">
                                     <table id="dataTableX" class="text-center">
@@ -378,14 +383,25 @@
     <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
+
+    <script src='https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js'></script>
+<script src='https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js'></script>
+<script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js'></script>
+<script src='https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js'></script>
+<script src='https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js'></script>
+<script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js'></script>
+<script src='https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js'></script>
     <script type="text/javascript">
         $(function () {
             var oTable = $('#dataTableX').DataTable({
                 processing: true,
-                serverSide: true,
+                serverSide: false,
                 ajax: {
                     url: '{{ url("tableData") }}'
                 },
+                dom: 'Bfrtip',
+                
                 //halohalo
                 columns: [{
                         data: 'avatar',
@@ -413,19 +429,23 @@
                     }
                     // {data: 'action', name: 'kategori', orderable: false, searchable: false},
                 ],
+                buttons: [
+            'copy', 'excelFlash', 'excel', 'pdf', 'print'
+        
+        ]
             });
-            $('#dataTableX tbody').on('click', 'button.btn.btn-danger', function (e) {
-                e.preventDefault()
-                var data = oTable.row($(this).parents('tr')).data();
-                console.log(data.id)
-                window.location.href = window.location.origin + `/delete/` + Number(data.id)
-            });
-            $('#dataTableX tbody').on('click', 'button.btn.btn-info', function (e) {
-                e.preventDefault()
-                var data = oTable.row($(this).parents('tr')).data();
-                // console.log(data.name)
+        $('#dataTableX tbody').on('click', 'button.btn.btn-danger', function (e) {
+            e.preventDefault()
+            var data = oTable.row($(this).parents('tr')).data();
+            console.log(data.id)
+            window.location.href = window.location.origin + `/delete/` + Number(data.id)
+        });
+        $('#dataTableX tbody').on('click', 'button.btn.btn-info', function (e) {
+            e.preventDefault()
+            var data = oTable.row($(this).parents('tr')).data();
+            // console.log(data.name)
 
-                $('#showModal').html(`
+            $('#showModal').html(`
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -463,10 +483,10 @@
             </div>
         </div>
                 `)
-                // window.location.href = window.location.origin + `/edit/` + Number(data.id)
+            // window.location.href = window.location.origin + `/edit/` + Number(data.id)
 
-            });
         });
+    });
 
     </script>
 </body>

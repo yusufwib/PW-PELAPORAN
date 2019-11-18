@@ -145,7 +145,7 @@
                                     @foreach($result as $res)
                                     @if($res->status == "menunggu")
                                     <div class="card">
-                                        <div class="card-header">
+                                        <div class="card-header">   
                                             <a class="card-link" data-toggle="collapse" href="#{{ $res->id }}">
                                                 Ruang : {{ $res->ruang }}
 
@@ -207,7 +207,8 @@
                                                 <strong>Nama pelapor : </strong> <br>
                                                 <strong>Kelas : </strong> <br>
                                                 <strong>Isi laporan : </strong> {{ $res->isi }}
-
+                                                <hr>
+                                                <strong>Accepted at : </strong> {{$res->updated_at}}
                                                 <div class="row">
                                                     <form action="/putFinish/{{ $res->id }}" method="POST">
                                                         @csrf
@@ -249,6 +250,8 @@
                                                 <strong>Kelas : </strong> <br>
                                                 <strong>Isi laporan : </strong> {{ $res->isi }}
 
+                                                <hr>
+                                                <strong>Finished at : </strong> {{$res->updated_at}}
                                                 <div class="row">
                                                     <form action="/putFinish/{{ $res->id }}" method="POST">
                                                         @csrf

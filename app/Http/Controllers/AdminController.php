@@ -31,7 +31,7 @@ class AdminController extends Controller
 
                     // 'role' => 'user'
                 ]);
-                return redirect('/adduser')->withSuccess(['message','Berhasil membuat akun']);
+                return redirect('/form')->withSuccess(['message','Berhasil membuat akun']);
             }
             else{
                 return redirect('/adduser')->withError(['message','Gagal membuat akun atau email sudah ada']);
@@ -71,7 +71,7 @@ return response()->json($result);
     public function getData(){
         $result = Laporan::
         join('users', 'users.id', '=', 'laporans.id_user')
-                            ->select('laporans.id','gambar','ruang','isi', 'users.nis', 'users.name','status')
+                            ->select('laporans.id','gambar','ruang','isi', 'users.nis', 'users.name','status','laporans.updated_at')
                             ->get();
                             // return response()->json($result);
         return view('accordion',['result'=>$result]);
