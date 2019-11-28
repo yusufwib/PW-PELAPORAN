@@ -140,7 +140,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="header-title">Requested</h4>
-                                <div id="accordion4" class="according accordion-s3 gradiant-bg">
+                                <div id="accordion4" class="according accordion-s3 gradiant-bg-1">
                                     <!-- //foreach  -->
                                     @foreach($result as $res)
                                     @if($res->status == "menunggu")
@@ -188,7 +188,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="header-title">On Going</h4>
-                                <div id="accordion4" class="according accordion-s3 gradiant-bg">
+                                <div id="accordion4" class="according accordion-s3 gradiant-bg-2">
                                     <!-- //foreach  -->
                                     @foreach($result as $res)
                                     @if($res->status == "proses")
@@ -230,7 +230,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="header-title">Finished</h4>
-                                <div id="accordion4" class="according accordion-s3 gradiant-bg">
+                                <div id="accordion4" class="according accordion-s3 gradiant-bg-3">
                                     <!-- //foreach  -->
                                     @foreach($result as $res)
                                     @if($res->status == "selesai")
@@ -255,7 +255,7 @@
                                                 <div class="row">
                                                     <form action="/putFinish/{{ $res->id }}" method="POST">
                                                         @csrf
-                                                        <button type="submit" class="btn btn-secondary m-2" disabled>Finish</button>
+                                                        <button type="submit" class="btn btn-secondary m-2" disabled>Finished</button>
                                                     </form>
                                                 </div>
                                             </div>

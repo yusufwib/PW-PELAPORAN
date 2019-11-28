@@ -16,7 +16,7 @@ $(document).ready(function(){
                             "offset-x": 0,
                         },
                         "item": { //Scale Items (scale values or labels)
-                            "font-size": 10,
+                            "font-size": 12,
                         },
                         "guide": { //Guides
                             "visible": false,
@@ -28,15 +28,15 @@ $(document).ready(function(){
                     "series": [
                         {
                             "values": [res.Sunday[0], res.Monday[0], res.Tuesday[0], res.Wednesday[0], res.Thursday[0], res.Friday[0], res.Saturday[0]],
-                            "line-color": "#0884D9",
+                            "line-color": "#FF4259",
                             /* "dotted" | "dashed" */
-                            "line-width": 5 /* in pixels */ ,
+                            "line-width": 3 /* in pixels */ ,
                             "marker": { /* Marker object */
-                                "background-color": "#067dce",
+                                "background-color": "#FF306E",
                                 /* hexadecimal or RGB value */
                                 "size": 5,
                                 /* in pixels */
-                                "border-color": "#067dce",
+                                "border-color": "#FF306E",
                                 /* hexadecimal or RBG value */
                             }
                         }

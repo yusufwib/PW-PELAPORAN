@@ -17,26 +17,41 @@ class LaporController extends Controller
     //
     public function lapor(Request $request){
 
-        $photo = $request->file('gambar');
-        $filename = $photo->getFilename().'.'.$photo->getClientOriginalExtension();
-        Storage::disk('public')->put($filename,File::get($photo));
+        $ruang = $request->input('ruang');
+        $check = Laporan::where('ruang', $ruang)->where( 'created_at', '>', Carbon::now()->subDays(2))->where('status','menunggu')->count();
+        // dd($check);
+        if($check <= 5){
+            $photo = $request->file('gambar');
+            $filename = $photo->getFilename().'.'.$photo->getClientOriginalExtension();
+            Storage::disk('public')->put($filename,File::get($photo));
+    
+            Laporan::insert([
+                'id_user' => $request->input('id_user'),
+                'ruang' => $request->input('ruang'),
+                'isi' => $request->input('isi'),
+                'gambar' => URL::to('/storage') .'/'. $filename,
+                'status' => 'menunggu',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+            return response()->json([
+                'success' => true,
+                'data' => [
+                    'message' => 'success add new row'
+                ],
+                'statusCode' => 200
+            ]);
+        }else{
+            return response()->json([
+                'success' => false,
+                'data' => [
+                    'message' => 'too many request in last 2 days in same room'
+                ],
+                'statusCode' => 400
+            ]);
+        }
 
-        Laporan::insert([
-            'id_user' => $request->input('id_user'),
-            'ruang' => $request->input('ruang'),
-            'isi' => $request->input('isi'),
-            'gambar' => URL::to('/storage') .'/'. $filename,
-            'status' => 'menunggu',
-            'created_at' => Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
-        return response()->json([
-            'success' => true,
-            'data' => [
-                'message' => 'success add new row'
-            ],
-            'statusCode' => 200
-        ]);
+        
     }
 
     public function editProfile(Request $request, $id){

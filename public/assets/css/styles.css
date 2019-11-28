@@ -714,8 +714,8 @@ ul.breadcrumbs {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
     background: -webkit-linear-gradient(left, #8914fe 0%, #8063f5 100%);
-    background: linear-gradient(to right, #8914fe 0%, #8063f5 100%);
-    padding: 17px 38px;
+    ;
+    background-image: linear-gradient(to bottom right, #FF306E, #FF4259);    padding: 17px 38px;
     position: relative;
 }
 
@@ -1696,7 +1696,7 @@ table.dbkit-table tr td {
 
 .gradiant-bg .card-header a {
     background-image: -webkit-linear-gradient(top left, #8914fe, #8160f6);
-    background-image: linear-gradient(to bottom right, #8914fe, #8160f6);
+    background-image: linear-gradient(to bottom right, #FF306E, #FF4259);
     color: #fff;
 }
 
@@ -1704,6 +1704,39 @@ table.dbkit-table tr td {
     color: #fff;
 }
 
+/* ================================================ */
+.gradiant-bg-1 .card-header a {
+    /* background-image: -webkit-linear-gradient(top left, #8914fe, #8160f6); */
+    background-color: #9DB6BA;
+    color: #fff;
+}
+
+table.dataTable thead th, table.dataTable thead td{
+    border: none;
+}
+.gradiant-bg-1 .card-header a:before {
+    color: #fff;
+}
+
+.gradiant-bg-2 .card-header a {
+    /* background-image: -webkit-linear-gradient(top left, #8914fe, #8160f6); */
+    background-color: #FFA63A;
+    color: #fff;
+}
+
+.gradiant-bg-2 .card-header a:before {
+    color: #fff;
+}
+
+.gradiant-bg-3 .card-header a {
+    /* background-image: -webkit-linear-gradient(top left, #8914fe, #8160f6); */
+    background-color: #18BAAF;
+    color: #fff;
+}
+
+.gradiant-bg-3 .card-header a:before {
+    color: #fff;
+}
 /*-------------------- END Accroding ------------------- */
 
 
@@ -2103,7 +2136,7 @@ div.dataTables_wrapper div.dataTables_length select {
 /* datatable-primary */
 
 .datatable-primary thead {
-    background: #4336fb;
+    background: #FF306E;
     color: #fff;
 }
 
@@ -2124,7 +2157,7 @@ table.dataTable.no-footer {
 
 table.dataTable thead th,
 table.dataTable thead td {
-    border-bottom-color: transparent;
+    border-bottom-color: 1px solid red;
 }
 
 .datatable-primary .dataTables_paginate .page-item.active .page-link,
@@ -2825,6 +2858,10 @@ table.dataTable thead td {
 .s-sw-title h5 {
     font-size: 16px;
     color: #555;
+}
+
+a.dt-button buttons-print{
+    background-color: #007BFF;
 }
 
 /*-------------------- END Offset Sidebar ------------------- */

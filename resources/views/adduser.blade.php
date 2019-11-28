@@ -116,7 +116,7 @@
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
-                    <div class="user-profile pull-right">
+                        <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="{{ Auth::user()->avatar }}" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <i
                                     class="fa fa-angle-down"></i></h4>
@@ -135,43 +135,63 @@
                             <!-- Textual inputs start -->
                             <div class="col-12 mt-5">
                                 <div class="card">
+                                    <div style="margin-top : 35px; margin-left : 35px;">
+                                    <h2 style="">Add new user</h2>
+                                    <p class="text-muted font-14 mb-4">Tambahkan pengguna baru!</p>
+                                    </div>
                                     <div class="card-body">
-                                    <form action="/register" method="post">
-                                    @csrf
-                                        <h4 class="header-title">Add new user</h4>
-                                        <p class="text-muted font-14 mb-4">Tambahkan pengguna baru!</p>
-                                        @if($errors->any())
-                    <div class="alert alert-danger alert-dismissible m-2" role="alert">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        {{$errors->first()}}
-                        
-                    </div>
-                    @endif
-                                        <div class="form-group">
-                                            <label for="example-text-input" class="col-form-label">NIS</label>
-                                            <input class="form-control" type="number" value="" id="example-text-input" name="nis" required>
+                                        <div class="card-header">
+                                            <h6>Import data siswa dengan excel</h6>
+                                            <div class="card-body">
+                                                <form action="{{ route('import') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="file" name="import_file" class="form-control">
+                                                    
+                                                    <a href="/example.xlsx" style="background-color:#17a2b8; color:white; border-radius : 3px; float: right; margin-top : 4px; font-size : 9px;" download>download example format *xlsx </a><br>
+                                                    <button class="btn btn-success">Import User Data</button> 
+                                                </form>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="example-search-input" class="col-form-label">Nama</label>
-                                            <input class="form-control" type="search" value=""
-                                                id="example-search-input" name="name" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="example-email-input" class="col-form-label">Email</label>
-                                            <input class="form-control" type="email" value="" id="example-email-input" name="email" required>
-                                        </div>
-                                        <!-- <div class="form-group"> -->
-                                        <!-- <label for="example-tel-input" class="col-form-label">Telephone</label> -->
-                                        <input class="form-control" type="hidden"
-                                            value="$2y$10$Pk5qZ2yWIymMBYyUFnOvjeqnGkZjxG5VAlb1JjTDasD6e1rVW14Sa"
-                                            id="example-tel-input" name="password">
+
+                                        <form action="/register" method="post">
+                                            @csrf
+
+                                            @if($errors->any())
+                                            <div class="alert alert-danger alert-dismissible m-2" role="alert">
+                                                <a href="#" class="close" data-dismiss="alert"
+                                                    aria-label="close">&times;</a>
+                                                {{$errors->first()}}
+
+                                            </div>
+                                            @endif
+                                            <div class="form-group">
+                                                <label for="example-text-input" class="col-form-label">NIS</label>
+                                                <input class="form-control" type="number" value=""
+                                                    id="example-text-input" name="nis" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="example-search-input" class="col-form-label">Nama</label>
+                                                <input class="form-control" type="search" value=""
+                                                    id="example-search-input" name="name" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="example-email-input" class="col-form-label">Email</label>
+                                                <input class="form-control" type="email" value=""
+                                                    id="example-email-input" name="email" required>
+                                            </div>
+                                            <!-- <div class="form-group"> -->
+                                            <!-- <label for="example-tel-input" class="col-form-label">Telephone</label> -->
                                             <input class="form-control" type="hidden"
-                                            value="http://smktelkom-pwt.sch.id/wp-content/uploads/2019/02/logo-telkom-schools.png"
-                                            id="example-tel-input" name="avatar">
-                                        <!-- </div> -->
-                                        <div class="col-auto my-1">
-                                            <button type="submit" class="btn btn-primary">Submit</button>
-                                        </div>
+                                                value="$2y$10$Pk5qZ2yWIymMBYyUFnOvjeqnGkZjxG5VAlb1JjTDasD6e1rVW14Sa"
+                                                id="example-tel-input" name="password">
+                                            <input class="form-control" type="hidden"
+                                                value="http://smktelkom-pwt.sch.id/wp-content/uploads/2019/02/logo-telkom-schools.png"
+                                                id="example-tel-input" name="avatar">
+                                            <!-- </div> -->
+                                            <div class="col-auto my-1">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
 
                                         </form>
                                     </div>
@@ -188,7 +208,7 @@
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
-                <p>© Copyright 2018. All right reserved.                 </p>
+                <p>© Copyright 2018. All right reserved. </p>
             </div>
         </footer>
         <!-- footer area end-->
@@ -386,5 +406,13 @@
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
 </body>
+
+<style>
+    table.dataTable thead th,
+    table.dataTable thead td {
+        border: none;
+    }
+
+</style>
 
 </html>

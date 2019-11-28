@@ -59,17 +59,17 @@ $(document).ready(function(){
                             "series": [{
                                     "values": [res.req],
                                     "text": "Requested",
-                                    "background-color": "#4cff63"
+                                    "background-color": "#9DB6BA" 
                                 },
                                 {
                                     "values": [res.proses],
                                     "text": "On Going",
-                                    "background-color": "#fd9c21"
+                                    "background-color": "#FFA63A"
                                 },
                                 {
                                     "values": [res.finish],
                                     "text": "Finished",
-                                    "background-color": "#2c13f8"
+                                    "background-color": "#18BAAF"
                                 }
                             ]
                         }

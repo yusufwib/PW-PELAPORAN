@@ -45,6 +45,8 @@ Route::post('/register', 'AdminController@register');
 Route::post('/checkLogin', 'AuthController@checkLogin')->name('checkLogin');
 Route::get('/login', 'AuthController@indexLogin')->name('login');
 Route::get('/delete/{id}', 'AdminController@deleteUser');
+Route::post('import', 'MaatwebsiteController@import')->name('import');
+
 
 // Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
