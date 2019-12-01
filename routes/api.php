@@ -26,7 +26,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     Route::get('getReport/{id_user}','LaporController@getReportIdUser');
     Route::get('getReportOne/{id}','LaporController@getReportId');
     Route::post('putProfile/{id}', 'LaporController@editProfile');
-    
+    Route::post('/delReport/{id}','LaporController@putdelReport');
+
     });
     
     Route::group(['prefix' => 'admin'], function(){

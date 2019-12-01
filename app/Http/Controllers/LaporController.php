@@ -53,6 +53,21 @@ class LaporController extends Controller
 
         
     }
+    public function putdelReport($id){
+        Laporan::where('id', $id)->update([
+            'status' => 'ditolak',
+            'updated_at' => Carbon::now(),
+
+        ]);
+
+        return response()->json([
+            'success' => true,
+            'data' => [
+                'message' => 'success reject',
+                'updated_at' => Car
+            ],
+            'statusCode' => 200
+        ]);    }
 
     public function editProfile(Request $request, $id){
 
@@ -68,7 +83,7 @@ class LaporController extends Controller
             'avatar' => URL::to('/storage') .'/'. $filename,
             'role' => 'user'
         ]);
-            
+
         if($result){
             return response()->json([
                 'success' => true,
