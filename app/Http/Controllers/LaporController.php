@@ -64,7 +64,6 @@ class LaporController extends Controller
             'success' => true,
             'data' => [
                 'message' => 'success reject',
-                'updated_at' => Car
             ],
             'statusCode' => 200
         ]);    }
