@@ -62,4 +62,4 @@ Route::get('/delReport/{id}','AdminController@delReport');
 Route::post('/delReport/{id}','AdminController@putdelReport');
 
 Route::get('/tableData','AdminController@table');
-Route::post('/putProfile/{id}','LaporController@editProfile');
+// Route::post('/putProfile/{id}','LaporController@editProfile');

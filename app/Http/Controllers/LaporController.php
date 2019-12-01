@@ -68,7 +68,7 @@ class LaporController extends Controller
             'avatar' => URL::to('/storage') .'/'. $filename,
             'role' => 'user'
         ]);
-
+            
         if($result){
             return response()->json([
                 'success' => true,
