@@ -73,7 +73,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="logout" aria-expanded="true"><i
+                                <a data-toggle="modal" data-target="#exampleModal" style="color : white;" aria-expanded="true"><i
                                         class="fa fa-exclamation-triangle"></i><span>logout</span></a>
 
                             </li>
@@ -84,7 +84,27 @@
 
 
         </div>
-
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="logout"  class="btn btn-danger">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <div class="main-content">
             <!-- header area start -->
             <div class="header-area">
@@ -136,7 +156,7 @@
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <i
                                     class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="logout">Log Out</a>
+                            <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -428,12 +448,17 @@
                     },
                     {
                         data: null,
-                        defaultContent: `<button class="btn btn-info" data-toggle="modal" data-target="#exampleModal" >Edit</button> <button class="btn btn-danger">Delete</button>`
+                        defaultContent: `<button class="btn btn-info"  style="background-color: #FBAD16; border: none;color: white;padding: 6px 6px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;"
+        data-toggle="modal" data-target="#exampleModal1" >EDIT</button> <button class="btn btn-danger"         style="background-color: white;   border: 2px solid #FF306E;color: #FF306E;padding: 4px 6px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;"
+>DELETE</button>`
                     }
                     // {data: 'action', name: 'kategori', orderable: false, searchable: false},
                 ],
-                buttons: [
-            'copy', 'excelFlash', 'excel', 'pdf', 'print'
+                buttons: [{
+                  extend : "copy",
+                  className : "btn btn-success"
+                }
+            // 'copy', 'excelFlash', 'excel', 'pdf', 'print'
         
         ]
             });
@@ -449,7 +474,7 @@
             // console.log(data.name)
 
             $('#showModal').html(`
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -492,6 +517,14 @@
     });
 
     </script>
-</body>
 
+</body>
+<style>
+a.dt-button.buttons-print{
+    background-color : red;
+}
+.halo{
+    background-color : red;
+}
+</style>
 </html>

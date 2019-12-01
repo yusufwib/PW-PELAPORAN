@@ -1737,6 +1737,15 @@ table.dataTable thead th, table.dataTable thead td{
 .gradiant-bg-3 .card-header a:before {
     color: #fff;
 }
+.gradiant-bg-69 .card-header a {
+    /* background-image: -webkit-linear-gradient(top left, #8914fe, #8160f6); */
+    background-color: white;
+    color: rgb(0, 0, 0);
+}
+
+.gradiant-bg-69 .card-header a:before {
+    color: rgb(0, 0, 0);
+}
 /*-------------------- END Accroding ------------------- */
 
 
@@ -2348,6 +2357,7 @@ table.dataTable thead td {
 .login-form-head {
     text-align: center;
     background: #8655FC;
+    background-image: linear-gradient(to bottom right, #FF306E, #FF4259);
     padding: 50px;
 }
 

@@ -26,7 +26,45 @@
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
+<style>
+/* Removes the clear button from date inputs */
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
 
+/* Removes the spin button */
+input[type="date"]::-webkit-inner-spin-button { 
+    display: none;
+}
+
+/* Always display the drop down caret */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #2c3e50;
+}
+
+/* A few custom styles for date inputs */
+input[type="date"] {
+    margin : 20px;
+    margin-bottom : -30px;
+    margin-left : 840px;
+    appearance: none;
+    -webkit-appearance: none;
+    color: #95a5a6;
+    font-size: 18px;
+    border:1px solid #ecf0f1;
+    background:#ecf0f1;
+    padding:5px;
+    display: inline-block !important;
+    visibility: visible !important;
+}
+
+input[type="date"], focus {
+    color: #95a5a6;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+}
+</style>
 <body>
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -60,7 +98,8 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="logout" aria-expanded="true"><i
+                                <a data-toggle="modal" data-target="#exampleModal" style="color : white;"
+                                    aria-expanded="true"><i
                                         class="fa fa-exclamation-triangle"></i><span>logout</span></a>
 
                             </li>
@@ -69,6 +108,27 @@
                 </div>
             </div>
 
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="logout" class="btn btn-danger">Logout</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- sidebar menu area end -->
         <!-- main content area start -->
@@ -124,7 +184,7 @@
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}<i
                                     class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="logout">Log Out</a>
+                                <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -132,6 +192,12 @@
             </div>
             <!-- page title area end -->
             <div class="main-content-inner">
+            <div class="mr-2" data-provide="datepicker">
+    <input type="date" class="datepicker">
+    <div class="input-group-addon">
+        <span class="glyphicon glyphicon-th"></span>
+    </div>
+</div>
                 <!-- accroding start -->
                 <div class="row">
                     <!-- accordion style 3 end -->
@@ -143,34 +209,40 @@
                                 <div id="accordion4" class="according accordion-s3 gradiant-bg-1">
                                     <!-- //foreach  -->
                                     @foreach($result as $res)
+                                    
                                     @if($res->status == "menunggu")
+                                    @if($res->created_at == )
                                     <div class="card">
-                                        <div class="card-header">   
+                                        <div class="card-header">
                                             <a class="card-link" data-toggle="collapse" href="#{{ $res->id }}">
                                                 Ruang : {{ $res->ruang }}
 
                                             </a>
                                         </div>
-                                        <div id="{{ $res->id }}" class="collapse" data-parent="#accordion4">
-                                            <br>
+                                        <div id="{{ $res->id }}" style="background-color : #F0F4F5" class="collapse" data-parent="#accordion4">
+                                            <!-- <br> -->
                                             <div class="card-body">
-                                                 <img src="{{ $res->gambar }}" alt="">
-                                                <br> <br>
-                                                <strong>Nama pelapor : </strong> {{ $res->name }} <br>
-
-                                                <strong>NIS : </strong> {{ $res->nis }} <br>
+                                                <strong>TANGGAL LAPORAN</strong> <br>
+                                                {{ $res->created_at }}
                                                 <hr>
-                                                <strong>Isi laporan : </strong> {{ $res->isi }}
-<hr>
+                                                <strong>NAMA PELAPOR </strong> <br> {{ $res->name }} <br>
+
+                                                <strong>NIS : </strong> <br> {{ $res->nis }} <br>
+                                                <hr>
+                                                <img src="{{ $res->gambar }}" alt="">
+                                                <br>
+                                                {{ $res->isi }}
+                                                <br>
+                                                <br>
                                                 <div class="row">
                                                     <form action="/putProses/{{ $res->id }}" method="POST">
                                                         @csrf
                                                         <button type="submit"
-                                                            class="btn btn-success m-2">Accept</button>
+                                                        style="background-color: #18BAAF; border: none;color: white;padding: 6px 6px;border-radius: 5px;margin : 0 10px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;">ACCEPT</button>
                                                     </form>
-                                                    <form action="/delReport/{{ $res->id }}" method="GET">
+                                                    <form action="/delReport/{{ $res->id }}" method="POST">
                                                         @csrf
-                                                        <button type="submit" class="btn btn-danger m-2">Reject</button>
+                                                        <button type="submit"         style="background-color: none;   border: 2px solid #FF306E;color: #FF306E;padding: 4px 6px;border-radius: 5px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;">REJECT</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -199,20 +271,28 @@
 
                                             </a>
                                         </div>
-                                        <div id="{{ $res->id }}" class="collapse" data-parent="#accordion4">
-                                            <br>
+                                        <div id="{{ $res->id }}" style="background-color : #FEF3DC" class="collapse" data-parent="#accordion4">
+                                            <!-- <br> -->
                                             <div class="card-body">
-                                                <img src="{{ $res->gambar }}" alt="">
-                                                <br> <br>
-                                                <strong>Nama pelapor : </strong> <br>
-                                                <strong>Kelas : </strong> <br>
-                                                <strong>Isi laporan : </strong> {{ $res->isi }}
+                                            <strong>ACCEPTED AT</strong> <br>
+                                                {{ $res->updated_at }}
                                                 <hr>
-                                                <strong>Accepted at : </strong> {{$res->updated_at}}
+                                            <strong>TANGGAL LAPORAN</strong> <br>
+                                                {{ $res->created_at }}
+                                                <hr>
+                                                <strong>NAMA PELAPOR </strong> <br> {{ $res->name }} <br>
+
+                                                <strong>NIS : </strong> <br> {{ $res->nis }} <br>
+                                                <hr>
+                                                <img src="{{ $res->gambar }}" alt="">
+                                                <br>
+                                                {{ $res->isi }}
+                                                <br>
+                                                <br>
                                                 <div class="row">
                                                     <form action="/putFinish/{{ $res->id }}" method="POST">
                                                         @csrf
-                                                        <button type="submit" class="btn btn-info m-2">Finish</button>
+                                                        <button type="submit" style="background-color: #18BAAF; border: none;color: white;padding: 6px 6px;border-radius: 5px;margin : 0 10px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;">FINISH</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -241,21 +321,29 @@
 
                                             </a>
                                         </div>
-                                        <div id="{{ $res->id }}" class="collapse" data-parent="#accordion4">
-                                            <br>
+                                        <div id="{{ $res->id }}" style="background-color : #E8F8F7" class="collapse" data-parent="#accordion4">
+                                            <!-- <br> -->
                                             <div class="card-body">
-                                                <img src="{{ $res->gambar }}" alt="">
-                                                <br> <br>
-                                                <strong>Nama pelapor : </strong> <br>
-                                                <strong>Kelas : </strong> <br>
-                                                <strong>Isi laporan : </strong> {{ $res->isi }}
-
+                                                 <strong>FINISHED AT</strong> <br>
+                                                {{ $res->updated_at }}
                                                 <hr>
-                                                <strong>Finished at : </strong> {{$res->updated_at}}
+                                            <strong>TANGGAL LAPORAN</strong> <br>
+                                                {{ $res->created_at }}
+                                                <hr>
+                                                <strong>NAMA PELAPOR </strong> <br> {{ $res->name }} <br>
+
+                                                <strong>NIS : </strong> <br> {{ $res->nis }} <br>
+                                                <hr>
+                                                <img src="{{ $res->gambar }}" alt="">
+                                                <br>
+                                                {{ $res->isi }}
+                                                <br>
+                                                <br>
                                                 <div class="row">
                                                     <form action="/putFinish/{{ $res->id }}" method="POST">
                                                         @csrf
-                                                        <button type="submit" class="btn btn-secondary m-2" disabled>Finished</button>
+                                                        <button type="submit" class="btn btn-secondary m-2 p-1"
+                                                            disabled>FINISHED</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -559,6 +647,12 @@
     <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
+    <script>
+    $('.datepicker').datepicker({
+    format: 'mm/dd/yyyy',
+    startDate: '-3d'
+});
+    </script>
 </body>
 
 </html>

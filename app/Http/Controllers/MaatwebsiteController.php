@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UsersImport;
 use App\User;
+use Illuminate\Support\Facades\URL;
 
 class MaatwebsiteController extends Controller
 {
@@ -19,7 +20,7 @@ class MaatwebsiteController extends Controller
                     $data['name'] = $row['name'];
                     $data['email'] = $row['email'];
                     $data['password'] = $row['password'];
-
+                    $data['avatar'] = "http://smktelkom-pwt.sch.id/wp-content/uploads/2019/02/logo-telkom-schools.png";
                     if(!empty($data)) {
                         // DB::table('users')->insert($data);
                         User::insert($data);

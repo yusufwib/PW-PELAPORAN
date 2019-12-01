@@ -42,7 +42,7 @@
                     {{csrf_field()}}
                     <div class="login-form-head">
                         <h4>Sign In</h4>
-                        <p>Hello there, Sign in and start managing your Admin Template</p>
+                        <p>Hello there, Sign in and start managing problem report!</p>
                     </div>
 
                     @if(session('success'))
@@ -83,12 +83,7 @@
                         <div class="submit-btn-area">
                             <button id="form_submit" type="submit">Submit <i class="ti-arrow-right"></i></button>
                         </div>
-
-
-                        <div class="form-footer text-center mt-5">
-                            <p class="text-muted">Don't have an account? <a href="register">Sign up</a></p>
-                        </div>
-                    </div>
+                     </div>
                 </form>
             </div>
         </div>

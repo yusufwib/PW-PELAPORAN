@@ -58,4 +58,6 @@ Route::post('/putFinish/{id}','AdminController@putFinish');
 Route::post('/edit','AdminController@edit');
 
 Route::get('/delReport/{id}','AdminController@delReport');
+Route::post('/delReport/{id}','AdminController@putdelReport');
+
 Route::get('/tableData','AdminController@table');

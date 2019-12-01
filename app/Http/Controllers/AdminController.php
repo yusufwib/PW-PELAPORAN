@@ -71,7 +71,7 @@ return response()->json($result);
     public function getData(){
         $result = Laporan::
         join('users', 'users.id', '=', 'laporans.id_user')
-                            ->select('laporans.id','gambar','ruang','isi', 'users.nis', 'users.name','status','laporans.updated_at')
+                            ->select('laporans.id','gambar','ruang','isi', 'users.nis', 'users.name','status','laporans.updated_at', 'laporans.created_at')
                             ->get();
                             // return response()->json($result);
         return view('accordion',['result'=>$result]);
@@ -105,6 +105,15 @@ return response()->json($result);
     }
     public function delReport($id){
         Laporan::where('id', $id)->delete();
+
+        return redirect('accordion');
+    }
+    public function putdelReport($id){
+        Laporan::where('id', $id)->update([
+            'status' => 'ditolak',
+            'updated_at' => Carbon::now(),
+
+        ]);
 
         return redirect('accordion');
     }

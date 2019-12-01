@@ -45,6 +45,7 @@
             </div>
 
 
+
             <div class="main-menu">
                 <div class="menu-inner">
                     <nav>
@@ -59,7 +60,8 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="logout" aria-expanded="true"><i
+                                <a data-toggle="modal" data-target="#exampleModal" style="color : white;"
+                                    aria-expanded="true"><i
                                         class="fa fa-exclamation-triangle"></i><span>logout</span></a>
 
                             </li>
@@ -68,6 +70,27 @@
                 </div>
             </div>
 
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <a href="logout" class="btn btn-danger">Logout</a>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- sidebar menu area end -->
         <!-- main content area start -->
@@ -121,7 +144,7 @@
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <i
                                     class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="logout">Log Out</a>
+                                <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -131,87 +154,129 @@
             <div class="main-content-inner">
                 <div class="row">
                     <div class="col-lg-6 col-ml-12">
+
                         <div class="row">
                             <!-- Textual inputs start -->
-                            <div class="col-12 mt-5">
+                            <div class="col-12 mt-1">
+                                <div style="margin-top : 35px; margin-left : 35px;">
+                                    <h3 style="">Form Tambah Pengguna</h3>
+
+                                    <p class="text-muted font-14 mb-4">Tambahkan pengguna melalui data dalam excel atau
+                                        secara manual</p>
+                                    <!-- Button trigger modal -->
+
+                                </div>
+
                                 <div class="card">
-                                    <div style="margin-top : 35px; margin-left : 35px;">
-                                    <h2 style="">Add new user</h2>
-                                    <p class="text-muted font-14 mb-4">Tambahkan pengguna baru!</p>
-                                    </div>
+
                                     <div class="card-body">
-                                        <div class="card-header">
-                                            <h6>Import data siswa dengan excel</h6>
-                                            <div class="card-body">
-                                                <form action="{{ route('import') }}" method="POST"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
-                                                    <input type="file" name="import_file" class="form-control">
-                                                    
-                                                    <a href="/example.xlsx" style="background-color:#17a2b8; color:white; border-radius : 3px; float: right; margin-top : 4px; font-size : 9px;" download>download example format *xlsx </a><br>
-                                                    <button class="btn btn-success">Import User Data</button> 
-                                                </form>
-                                            </div>
-                                        </div>
+                                        <!-- <div class="card-header"> -->
+                                        <h4>Import Data Melalui Excel</h4>
+                                        <div class="card-body">
+                                            <form action="{{ route('import') }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="row">
 
-                                        <form action="/register" method="post">
-                                            @csrf
+                                                    <input type="file" name="import_file" id="inputlur"
+                                                        style="width: 85%;" class="form-control">
+                                                    <br>
+                                                    <button
+                                                        style="background-color: #FBAD16; border: none;color: white;padding: 11px 11px;border-radius: 5px; margin-left : 10px; text-align: center;text-decoration: none;display: inline-block;font-size: 14px;">IMPORT
+                                                        DATA</button>
 
-                                            @if($errors->any())
-                                            <div class="alert alert-danger alert-dismissible m-2" role="alert">
-                                                <a href="#" class="close" data-dismiss="alert"
-                                                    aria-label="close">&times;</a>
-                                                {{$errors->first()}}
+                                                </div>
+                                                <a href="/example.xlsx" style="background-color:#17a2b8; color:white; border-radius : 3px; float: left; margin-top : 4px; font-size : 9px;" download>download example format *xlsx </a><br>
 
-                                            </div>
-                                            @endif
-                                            <div class="form-group">
-                                                <label for="example-text-input" class="col-form-label">NIS</label>
-                                                <input class="form-control" type="number" value=""
-                                                    id="example-text-input" name="nis" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="example-search-input" class="col-form-label">Nama</label>
-                                                <input class="form-control" type="search" value=""
-                                                    id="example-search-input" name="name" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="example-email-input" class="col-form-label">Email</label>
-                                                <input class="form-control" type="email" value=""
-                                                    id="example-email-input" name="email" required>
-                                            </div>
-                                            <!-- <div class="form-group"> -->
-                                            <!-- <label for="example-tel-input" class="col-form-label">Telephone</label> -->
-                                            <input class="form-control" type="hidden"
-                                                value="$2y$10$Pk5qZ2yWIymMBYyUFnOvjeqnGkZjxG5VAlb1JjTDasD6e1rVW14Sa"
-                                                id="example-tel-input" name="password">
-                                            <input class="form-control" type="hidden"
-                                                value="http://smktelkom-pwt.sch.id/wp-content/uploads/2019/02/logo-telkom-schools.png"
-                                                id="example-tel-input" name="avatar">
+                                            </form>
                                             <!-- </div> -->
-                                            <div class="col-auto my-1">
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </div>
-
-                                        </form>
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="according accordion-s3 gradiant-bg-69">
+
+                                <div class="card mt-5">
+                                    <div class="card-header">
+                                        <a class="card-link" data-toggle="collapse" href="#1">
+                                            <h4 style="color:black">Tambah Data Secara Manual</h4>
+
+                                        </a>
+
+                                    </div>
+                                    <div id="1" class="collapse" data-parent="#accordion4">
+                                        <!-- <br> -->
+                                        <div class="card-body">
+                                            <form action="/register" method="post">
+                                                @csrf
+
+                                                @if($errors->any())
+                                                <div class="alert alert-danger alert-dismissible m-2" role="alert">
+                                                    <a href="#" class="close" data-dismiss="alert"
+                                                        aria-label="close">&times;</a>
+                                                    {{$errors->first()}}
+
+                                                </div>
+                                                @endif
+                                                <div class="form-group">
+                                                    <label for="example-text-input" class="col-form-label">NIS</label>
+                                                    <input class="form-control" type="number" value=""
+                                                        id="example-text-input" name="nis" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="example-search-input"
+                                                        class="col-form-label">Nama</label>
+                                                    <input class="form-control" type="search" value=""
+                                                        id="example-search-input" name="name" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="example-email-input"
+                                                        class="col-form-label">Email</label>
+                                                    <input class="form-control" type="email" value=""
+                                                        id="example-email-input" name="email" required>
+                                                </div>
+                                                <!-- <div class="form-group"> -->
+                                                <!-- <label for="example-tel-input" class="col-form-label">Telephone</label> -->
+                                                <input class="form-control" type="hidden"
+                                                    value="$2y$10$Pk5qZ2yWIymMBYyUFnOvjeqnGkZjxG5VAlb1JjTDasD6e1rVW14Sa"
+                                                    id="example-tel-input" name="password">
+                                                <input class="form-control" type="hidden"
+                                                    value="http://smktelkom-pwt.sch.id/wp-content/uploads/2019/02/logo-telkom-schools.png"
+                                                    id="example-tel-input" name="avatar">
+                                                <!-- </div> -->
+                                                <div class="col-auto my-1">
+                                                    <button type="submit"
+                                                        style="background-color: #FBAD16; border: none;color: white;padding: 11px 13px;border-radius: 5px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;">SUBMIT</button>
+                                                    <a style="background-color: white;   border: 2px solid #FF306E;color: #FF306E;margin: 10px;padding: 9px 13px;border-radius: 5px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;"
+                                                        data-toggle="collapse" href="#1">CANCEL</a>
+
+                                                </div>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 </div>
                             </div>
 
-                            <!-- button with dropdown end -->
+
+
+
                         </div>
+
+                        <!-- button with dropdown end -->
                     </div>
                 </div>
             </div>
         </div>
-        <!-- main content area end -->
-        <!-- footer area start-->
-        <footer>
-            <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. </p>
-            </div>
-        </footer>
-        <!-- footer area end-->
+    </div>
+    <!-- main content area end -->
+    <!-- footer area start-->
+    <footer>
+        <div class="footer-area">
+            <p>© Copyright 2018. All right reserved. </p>
+        </div>
+    </footer>
+    <!-- footer area end-->
     </div>
     <!-- page container area end -->
     <!-- offset area start -->
@@ -412,6 +477,10 @@
     table.dataTable thead td {
         border: none;
     }
+
+    /* #inputlur.button{
+        background-color: #18BAAF;   border: none;color: white;padding: 11px 13px;border-radius: 5px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;
+    } */
 
 </style>
 

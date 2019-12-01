@@ -55,14 +55,36 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="logout" aria-expanded="true"><i class="fa fa-exclamation-triangle"></i><span>logout</span></a>
-                                
+                                <a data-toggle="modal" data-target="#exampleModal" style="color : white;" aria-expanded="true"><i
+                                        class="fa fa-exclamation-triangle"></i><span>logout</span></a>
+
                             </li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Logout</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="logout"  class="btn btn-danger">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <!-- sidebar menu area end -->
         <!-- main content area start -->
         <div class="main-content">
@@ -116,7 +138,7 @@
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="logout">Log Out</a>
+                            <a class="dropdown-item" data-toggle="modal" data-target="#exampleModal">Log Out</a>
                             </div>
                         </div>
                     </div>
