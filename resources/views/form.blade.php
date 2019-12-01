@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Datatable - srtdash</title>
+    <title>User Data - Sobat Sarpra</title>
+    <link rel = "icon" href = "assets/images/icon/logo.png"
+        type = "image/x-icon"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -116,12 +118,6 @@
                             <span></span>
                             <span></span>
                         </div>
-                        <div class="search-box pull-left">
-                            <form action="#">
-                                <input type="text" name="search" placeholder="Search..." required>
-                                <i class="ti-search"></i>
-                            </form>
-                        </div>
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-6 col-sm-4 clearfix">
@@ -130,9 +126,7 @@
                             <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                             <li class="dropdown">
                             </li>
-                            <li class="settings-btn">
-                                <i class="ti-settings"></i>
-                            </li>
+            
                         </ul>
                     </div>
                 </div>
@@ -145,8 +139,8 @@
                         <div class="breadcrumbs-area clearfix">
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
-                                <li><span>Datatable</span></li>
+                                <li><a href="dashboard">Home</a></li>
+                                <li><span>User Data</span></li>
                             </ul>
                         </div>
                     </div>
@@ -172,11 +166,16 @@
                     <div class="col-12 mt-5">
                         <div class="card">
                             <!-- <button class="editor_create"> Add </button> -->
-                            <a href="adduser" class="btn btn-success m-2"
-                                style="width : 122px; text-align : center; float : right;">Add new user</a>
-                            <div class="card-body">
 
-                                <h4 class="header-title">Data Table Primary</h4>
+                            <div class="card-body">
+                                <!-- <div class="mb-3"> -->
+                            <a href="adduser"
+                            style="background-color: #FF306E; float : right;border: none;color: white;padding: 11px 11px;border-radius: 5px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px; margin-bottom : 30px;">ADD NEW USER</a>
+                                <h2>MANAGE USER DATA</h2>
+                                <!-- </div> -->
+                                <br> 
+                                <br>
+                                <br>
                                 <div class="data-tables datatable-primary">
                                     <table id="dataTableX" class="text-center">
                                         <thead class="text-capitalize">
@@ -454,11 +453,8 @@
                     }
                     // {data: 'action', name: 'kategori', orderable: false, searchable: false},
                 ],
-                buttons: [{
-                  extend : "copy",
-                  className : "btn btn-success"
-                }
-            // 'copy', 'excelFlash', 'excel', 'pdf', 'print'
+                buttons: [
+            'excelFlash', 'excel', 'pdf', 'print', 'copy'
         
         ]
             });
@@ -520,11 +516,5 @@
 
 </body>
 <style>
-a.dt-button.buttons-print{
-    background-color : red;
-}
-.halo{
-    background-color : red;
-}
 </style>
 </html>

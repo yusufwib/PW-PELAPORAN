@@ -76,6 +76,21 @@ return response()->json($result);
                             // return response()->json($result);
         return view('accordion',['result'=>$result]);
     }
+
+    public function getDataByDate(Request $request){
+        // dd(date('d-m-Y', strtotime('laporans.updated_at')));
+        // $try = Laporan::select('updated_at')->get();
+        // dd($try[0]->updated_at);   
+        $result = Laporan::
+        join('users', 'users.id', '=', 'laporans.id_user')
+                            ->select('laporans.id','gambar','ruang','isi', 'users.nis', 'users.name','status','laporans.updated_at', 'laporans.created_at')
+                            ->whereBetween('laporans.updated_at', array($request->input('tgl'),$request->input('akhir')))
+                            // ->where('laporans.updated_at','>=', $request->input('akhir'))
+                            ->get();
+                            // return response()->json($result);
+        return view('accordion',['result'=>$result]);
+    }
+
     public function putProses($id){
         Laporan::where('id', $id)->update([
             'status' => 'proses',

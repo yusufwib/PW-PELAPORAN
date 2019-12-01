@@ -7,7 +7,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Accordion - srtdash</title>
+    <title>Notification - Sobat Sarpra</title>
+    <link rel = "icon" href = "assets/images/icon/logo.png"
+        type = "image/x-icon"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -27,44 +29,49 @@
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <style>
-/* Removes the clear button from date inputs */
-input[type="date"]::-webkit-clear-button {
+    /* Removes the clear button from date inputs */
+    /* input[type="date"]::-webkit-clear-button {
     display: none;
 }
 
 /* Removes the spin button */
-input[type="date"]::-webkit-inner-spin-button { 
+    /* input[type="date"]::-webkit-inner-spin-button { 
     display: none;
-}
+} */
 
-/* Always display the drop down caret */
-input[type="date"]::-webkit-calendar-picker-indicator {
+    /* Always display the drop down caret */
+    /* input[type="date"]::-webkit-calendar-picker-indicator {
     color: #2c3e50;
-}
+}  */
 
-/* A few custom styles for date inputs */
-input[type="date"] {
-    margin : 20px;
-    margin-bottom : -30px;
-    margin-left : 840px;
-    appearance: none;
-    -webkit-appearance: none;
-    color: #95a5a6;
-    font-size: 18px;
-    border:1px solid #ecf0f1;
-    background:#ecf0f1;
-    padding:5px;
-    display: inline-block !important;
-    visibility: visible !important;
-}
+    /* A few custom styles for date inputs */
+    input[type="date"] {
+        margin-top: 25px;
+        margin-right: 25px;
 
-input[type="date"], focus {
+        margin-left: 25px;
+        appearance: none;
+        border: 1px solid #353C4B;
+        border-radius: 4px;
+        /* -webkit-appearance: none; */
+        color: #95a5a6;
+        font-size: 14px;
+        background: #ecf0f1;
+        padding: 5px;
+        height : 40px;  
+        /* display: inline-block !important; */
+        /* visibility: visible !important; */
+    }
+
+    /* input[type="date"], focus {
     color: #95a5a6;
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-}
+} */
+
 </style>
+
 <body>
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -143,12 +150,6 @@ input[type="date"], focus {
                             <span></span>
                             <span></span>
                         </div>
-                        <div class="search-box pull-left">
-                            <form action="#">
-                                <input type="text" name="search" placeholder="Search..." required>
-                                <i class="ti-search"></i>
-                            </form>
-                        </div>
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-6 col-sm-4 clearfix">
@@ -157,9 +158,6 @@ input[type="date"], focus {
                             <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
                             <li class="dropdown">
 
-                            </li>
-                            <li class="settings-btn">
-                                <i class="ti-settings"></i>
                             </li>
                         </ul>
                     </div>
@@ -173,8 +171,8 @@ input[type="date"], focus {
                         <div class="breadcrumbs-area clearfix">
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
-                                <li><span>Accordion</span></li>
+                                <li><a href="dashboard">Home</a></li>
+                                <li><span>Notification</span></li>
                             </ul>
                         </div>
                     </div>
@@ -192,12 +190,25 @@ input[type="date"], focus {
             </div>
             <!-- page title area end -->
             <div class="main-content-inner">
-            <div class="mr-2" data-provide="datepicker">
-    <input type="date" class="datepicker">
-    <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-    </div>
-</div>
+                <div class="mr-2" data-provide="datepicker">
+                    <h4 style ="margin-top : 20px; color : #353C4B">TIME RANGE</h4>
+                    <form name="form" action="accordion" method="post">
+                        @csrf
+                        <div class="row">
+
+                            <input type="date" class="datepicker" name="tgl" id="tgl">
+                            <b style="margin-top : 22px; font-size : 30px"> -</b>
+                            <input type="date" class="datepicker" name="akhir" id="tgl1">
+
+                            <button type="submit"
+                                style="background-color: #FF306E; border: none;color: white;padding: 11px 11px;border-radius: 5px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px; height : 40px; margin-top : 25px;">SUBMIT</button>
+
+                        </div>
+                    </form>
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
                 <!-- accroding start -->
                 <div class="row">
                     <!-- accordion style 3 end -->
@@ -208,10 +219,10 @@ input[type="date"], focus {
                                 <h4 class="header-title">Requested</h4>
                                 <div id="accordion4" class="according accordion-s3 gradiant-bg-1">
                                     <!-- //foreach  -->
+
                                     @foreach($result as $res)
-                                    
+
                                     @if($res->status == "menunggu")
-                                    @if($res->created_at == )
                                     <div class="card">
                                         <div class="card-header">
                                             <a class="card-link" data-toggle="collapse" href="#{{ $res->id }}">
@@ -219,7 +230,8 @@ input[type="date"], focus {
 
                                             </a>
                                         </div>
-                                        <div id="{{ $res->id }}" style="background-color : #F0F4F5" class="collapse" data-parent="#accordion4">
+                                        <div id="{{ $res->id }}" style="background-color : #F0F4F5" class="collapse"
+                                            data-parent="#accordion4">
                                             <!-- <br> -->
                                             <div class="card-body">
                                                 <strong>TANGGAL LAPORAN</strong> <br>
@@ -238,11 +250,12 @@ input[type="date"], focus {
                                                     <form action="/putProses/{{ $res->id }}" method="POST">
                                                         @csrf
                                                         <button type="submit"
-                                                        style="background-color: #18BAAF; border: none;color: white;padding: 6px 6px;border-radius: 5px;margin : 0 10px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;">ACCEPT</button>
+                                                            style="background-color: #18BAAF; border: none;color: white;padding: 6px 6px;border-radius: 5px;margin : 0 10px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;">ACCEPT</button>
                                                     </form>
                                                     <form action="/delReport/{{ $res->id }}" method="POST">
                                                         @csrf
-                                                        <button type="submit"         style="background-color: none;   border: 2px solid #FF306E;color: #FF306E;padding: 4px 6px;border-radius: 5px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;">REJECT</button>
+                                                        <button type="submit"
+                                                            style="background-color: none;   border: 2px solid #FF306E;color: #FF306E;padding: 4px 6px;border-radius: 5px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;">REJECT</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -271,13 +284,14 @@ input[type="date"], focus {
 
                                             </a>
                                         </div>
-                                        <div id="{{ $res->id }}" style="background-color : #FEF3DC" class="collapse" data-parent="#accordion4">
+                                        <div id="{{ $res->id }}" style="background-color : #FEF3DC" class="collapse"
+                                            data-parent="#accordion4">
                                             <!-- <br> -->
                                             <div class="card-body">
-                                            <strong>ACCEPTED AT</strong> <br>
+                                                <strong>ACCEPTED AT</strong> <br>
                                                 {{ $res->updated_at }}
                                                 <hr>
-                                            <strong>TANGGAL LAPORAN</strong> <br>
+                                                <strong>TANGGAL LAPORAN</strong> <br>
                                                 {{ $res->created_at }}
                                                 <hr>
                                                 <strong>NAMA PELAPOR </strong> <br> {{ $res->name }} <br>
@@ -292,7 +306,8 @@ input[type="date"], focus {
                                                 <div class="row">
                                                     <form action="/putFinish/{{ $res->id }}" method="POST">
                                                         @csrf
-                                                        <button type="submit" style="background-color: #18BAAF; border: none;color: white;padding: 6px 6px;border-radius: 5px;margin : 0 10px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;">FINISH</button>
+                                                        <button type="submit"
+                                                            style="background-color: #18BAAF; border: none;color: white;padding: 6px 6px;border-radius: 5px;margin : 0 10px;text-align: center;text-decoration: none;display: inline-block;font-size: 14px;">FINISH</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -321,13 +336,14 @@ input[type="date"], focus {
 
                                             </a>
                                         </div>
-                                        <div id="{{ $res->id }}" style="background-color : #E8F8F7" class="collapse" data-parent="#accordion4">
+                                        <div id="{{ $res->id }}" style="background-color : #E8F8F7" class="collapse"
+                                            data-parent="#accordion4">
                                             <!-- <br> -->
                                             <div class="card-body">
-                                                 <strong>FINISHED AT</strong> <br>
+                                                <strong>FINISHED AT</strong> <br>
                                                 {{ $res->updated_at }}
                                                 <hr>
-                                            <strong>TANGGAL LAPORAN</strong> <br>
+                                                <strong>TANGGAL LAPORAN</strong> <br>
                                                 {{ $res->created_at }}
                                                 <hr>
                                                 <strong>NAMA PELAPOR </strong> <br> {{ $res->name }} <br>
@@ -648,10 +664,11 @@ input[type="date"], focus {
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
     <script>
-    $('.datepicker').datepicker({
-    format: 'mm/dd/yyyy',
-    startDate: '-3d'
-});
+        $('.datepicker').datepicker({
+            format: 'mm/dd/yyyy',
+            startDate: '-3d'
+        });
+
     </script>
 </body>
 

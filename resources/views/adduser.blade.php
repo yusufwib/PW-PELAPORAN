@@ -4,7 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Form - srtdash</title>
+    <title>Add User - Sobat Sarpra</title>
+    <link rel = "icon" href = "assets/images/icon/logo.png"
+        type = "image/x-icon"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -105,12 +107,6 @@
                             <span></span>
                             <span></span>
                         </div>
-                        <div class="search-box pull-left">
-                            <form action="#">
-                                <input type="text" name="search" placeholder="Search..." required>
-                                <i class="ti-search"></i>
-                            </form>
-                        </div>
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-6 col-sm-4 clearfix">
@@ -118,9 +114,6 @@
                             <li id="full-view"><i class="ti-fullscreen"></i></li>
                             <li id="full-view-exit"><i class="ti-zoom-out"></i></li>
 
-                            <li class="settings-btn">
-                                <i class="ti-settings"></i>
-                            </li>
                         </ul>
                     </div>
                 </div>
@@ -133,7 +126,8 @@
                         <div class="breadcrumbs-area clearfix">
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="dashboard">Home</a></li>
+                                <li><a href="form">Data User</a></li>
                                 <li><span>Form</span></li>
                             </ul>
                         </div>
@@ -220,19 +214,19 @@
                                                 <div class="form-group">
                                                     <label for="example-text-input" class="col-form-label">NIS</label>
                                                     <input class="form-control" type="number" value=""
-                                                        id="example-text-input" name="nis" required>
+                                                        id="example-text-input" name="nis" required placeholder="Masukkan NIS">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="example-search-input"
                                                         class="col-form-label">Nama</label>
                                                     <input class="form-control" type="search" value=""
-                                                        id="example-search-input" name="name" required>
+                                                        id="example-search-input" name="name" required placeholder="Masukkan Nama">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="example-email-input"
                                                         class="col-form-label">Email</label>
                                                     <input class="form-control" type="email" value=""
-                                                        id="example-email-input" name="email" required>
+                                                        id="example-email-input" name="email" required placeholder="Masukkan Email  ">
                                                 </div>
                                                 <!-- <div class="form-group"> -->
                                                 <!-- <label for="example-tel-input" class="col-form-label">Telephone</label> -->

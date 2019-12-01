@@ -37,7 +37,8 @@ Route::middleware(['auth', 'revalidate'])->group(function() {
     Route::get('/datatable', function () {
         return view('datatable');
     });
-
+    Route::get('/accordion','AdminController@getData')->name('accordion');
+    Route::post('/accordion','AdminController@getDataByDate');
 
 });
 Route::post('/register', 'AdminController@register');
@@ -51,7 +52,7 @@ Route::post('import', 'MaatwebsiteController@import')->name('import');
 // Route::post('/register', 'AuthController@register')->name('register');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 
-Route::get('/accordion','AdminController@getData')->name('accordion');
+
 
 Route::post('/putProses/{id}','AdminController@putProses');
 Route::post('/putFinish/{id}','AdminController@putFinish');
@@ -61,3 +62,4 @@ Route::get('/delReport/{id}','AdminController@delReport');
 Route::post('/delReport/{id}','AdminController@putdelReport');
 
 Route::get('/tableData','AdminController@table');
+Route::post('/putProfile/{id}','LaporController@editProfile');
