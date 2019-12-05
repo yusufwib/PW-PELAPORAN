@@ -19,7 +19,7 @@ class MaatwebsiteController extends Controller
                     $data['nis'] = $row['nis'];
                     $data['name'] = $row['name'];
                     $data['email'] = $row['email'];
-                    $data['password'] = $row['password'];
+                    $data['password'] = bcrypt($row['password']);
                     $data['avatar'] = "http://smktelkom-pwt.sch.id/wp-content/uploads/2019/02/logo-telkom-schools.png";
                     if(!empty($data)) {
                         // DB::table('users')->insert($data);

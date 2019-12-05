@@ -20,6 +20,6 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'nis' => $faker->randomNumber($nbDigits = NULL, $strict = false),
         'avatar' => $faker->imageUrl(400, 300, 'cats', true, 'Faker', true),
-        'password' => bcrypt('senosabil'), // secret
+        'password' => bcrypt('password'), // secret
     ];
 });
